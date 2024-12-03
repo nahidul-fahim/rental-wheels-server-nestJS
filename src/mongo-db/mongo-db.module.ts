@@ -9,6 +9,9 @@ import { MongooseModule } from '@nestjs/mongoose';
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
         uri: configService.get<string>('MONGODB_URI'),
+        onConnectionCreate: () => {
+          console.log('===========Connected to MongoDB===========');
+        }
       }),
     })
   ]
