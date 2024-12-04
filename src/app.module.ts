@@ -5,6 +5,7 @@ import { CarModule } from './car/car.module';
 import { ConfigModule } from '@nestjs/config';
 import { validate } from '@/config';
 import { MongoDbModule } from './mongo-db/mongo-db.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { MongoDbModule } from './mongo-db/mongo-db.module';
       validate,
       isGlobal: true
     }),
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
