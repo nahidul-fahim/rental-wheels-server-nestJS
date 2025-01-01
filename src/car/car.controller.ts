@@ -1,5 +1,5 @@
 import { CarService } from './car.service';
-import { Body, Controller, Get, HttpStatus, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpStatus, Param, Patch, Post } from '@nestjs/common';
 import { CreateCarDto } from './dto/create-car.dto';
 import { createResponse } from '@/common/utils/create-response';
 import { UpdateCarDto } from './dto/update-car.dto';
@@ -50,6 +50,16 @@ export class CarController {
       true,
       'Car updated successfully',
       result
+    )
+  }
+
+  @Delete(':id')
+  async deleteCar(@Param('id') id: string) {
+    await this.carService.deleteCar(id);
+    return createResponse(
+      HttpStatus.OK,
+      true,
+      'Car deleted successfully',
     )
   }
 };
