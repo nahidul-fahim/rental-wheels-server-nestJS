@@ -1,7 +1,8 @@
 import { CarService } from './car.service';
-import { Body, Controller, Get, HttpStatus, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, HttpStatus, Param, Patch, Post } from '@nestjs/common';
 import { CreateCarDto } from './dto/create-car.dto';
 import { createResponse } from '@/common/utils/create-response';
+import { UpdateCarDto } from './dto/update-car.dto';
 
 @Controller('car')
 export class CarController {
@@ -39,5 +40,16 @@ export class CarController {
       'Car fetched successfully',
       result
     );
+  }
+
+  @Patch(':id')
+  async updateCar(@Param('id') id: string, @Body() updateCarDto: UpdateCarDto) {
+    const result = await this.carService.updateCar(id, updateCarDto);
+    return createResponse(
+      HttpStatus.OK,
+      true,
+      'Car updated successfully',
+      result
+    )
   }
 };

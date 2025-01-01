@@ -105,4 +105,14 @@ CarSchema.pre('findOne', function (next) {
   next();
 });
 
+CarSchema.pre('findOneAndUpdate', function (next) {
+  this.find({ isDeleted: { $ne: true } });
+  next();
+});
+
+CarSchema.pre('findOneAndDelete', function (next) {
+  this.find({ isDeleted: { $ne: true } });
+  next();
+});
+
 export { CarSchema };
