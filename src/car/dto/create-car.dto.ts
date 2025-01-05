@@ -1,4 +1,10 @@
-import { IsBoolean, IsEnum, IsNumber, IsOptional, IsString } from "class-validator";
+import {
+  IsBoolean,
+  IsEnum,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from "class-validator";
 import { CarStatus } from "../entities/car.entity";
 
 export class CreateCarDto {
